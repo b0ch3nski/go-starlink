@@ -3,7 +3,7 @@ module github.com/b0ch3nski/go-starlink
 go 1.17
 
 require (
-	google.golang.org/grpc v1.57.0
+	google.golang.org/grpc v1.57.2
 	google.golang.org/protobuf v1.31.0
 )
 
