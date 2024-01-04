@@ -93,3 +93,13 @@ func (c *client) Reboot(ctx context.Context) error {
 	_, err := c.do(ctx, req)
 	return err
 }
+
+func (c *client) Location(ctx context.Context) (*device.GetLocationResponse, error) {
+	req := &device.Request{Request: &device.Request_GetLocation{}}
+
+	resp, err := c.do(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+	return resp.GetGetLocation(), nil
+}
