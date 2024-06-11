@@ -1,6 +1,6 @@
 REQ_GEN_DEPS := grpcurl protoc protoc-gen-go protoc-gen-go-grpc
 
-GEN_PROTO := spacex/api/common/status/status.proto spacex/api/device/command.proto spacex/api/device/common.proto spacex/api/device/device.proto spacex/api/device/dish_config.proto spacex/api/device/dish.proto spacex/api/device/services/unlock/service.proto spacex/api/device/transceiver.proto spacex/api/device/wifi_config.proto spacex/api/device/wifi_util.proto spacex/api/device/wifi.proto spacex/api/satellites/network/ut_disablement_codes.proto spacex/api/telemetron/public/common/time.proto
+GEN_PROTO := spacex/api/common/status/status.proto spacex/api/device/command.proto spacex/api/device/common.proto spacex/api/device/device.proto spacex/api/device/dish_config.proto spacex/api/device/dish.proto spacex/api/device/rssi_scan.proto spacex/api/device/services/unlock/service.proto spacex/api/device/transceiver.proto spacex/api/device/wifi_config.proto spacex/api/device/wifi_util.proto spacex/api/device/wifi.proto spacex/api/satellites/network/ut_disablement_codes.proto spacex/api/telemetron/public/common/time.proto
 GEN_MODEL_DIR := model
 
 .ONESHELL:
@@ -26,3 +26,5 @@ generate: ## Genertes Golang code based on GRPC reflection from Dishy
 
 	find ./$(GEN_MODEL_DIR) -type f -name "*.go" -exec \
 	sed -i "s|spacex.com/api|$$(awk '/module/{print $$2}' go.mod)/$(GEN_MODEL_DIR)|g" {} \;
+	sed -i "/indirect/d" go.mod
+	go mod tidy -v -e
