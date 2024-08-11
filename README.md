@@ -17,16 +17,18 @@ For a code generation procedure, see included [Makefile](Makefile).
 ## install
 
 ```
-go get github.com/b0ch3nski/go-starlink
+go get github.com/b0ch3nski/go-starlink@latest
 ```
 
 ## example
 
 ```go
+import "github.com/b0ch3nski/go-starlink/starlink"
+
 ctx := context.Background()
 
-starlinkClient, _ := client.NewClient(ctx, client.DefaultDishyAddr)
-starlinkStatus, _ := starlinkClient.Status(ctx)
+starlinkClient, _ := starlink.NewClient(ctx, starlink.DefaultDishyAddr)
+starlinkStatus,_ := starlinkClient.Status(ctx)
 
 fmt.Println(starlinkStatus)
 ```

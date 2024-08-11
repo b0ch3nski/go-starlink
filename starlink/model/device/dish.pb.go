@@ -10,7 +10,7 @@ import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
-	satellites "github.com/b0ch3nski/go-starlink/model/satellites"
+	satellites "github.com/b0ch3nski/go-starlink/starlink/model/satellites"
 	sync "sync"
 )
 

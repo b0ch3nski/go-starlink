@@ -11,8 +11,8 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
-	unlock "github.com/b0ch3nski/go-starlink/model/device/services/unlock"
-	status "github.com/b0ch3nski/go-starlink/model/status"
+	unlock "github.com/b0ch3nski/go-starlink/starlink/model/device/services/unlock"
+	status "github.com/b0ch3nski/go-starlink/starlink/model/status"
 	sync "sync"
 )
 

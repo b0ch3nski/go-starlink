@@ -11,7 +11,7 @@ import (
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	wrapperspb "google.golang.org/protobuf/types/known/wrapperspb"
 	reflect "reflect"
-	telemetron "github.com/b0ch3nski/go-starlink/model/telemetron"
+	telemetron "github.com/b0ch3nski/go-starlink/starlink/model/telemetron"
 	sync "sync"
 )
 

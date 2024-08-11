@@ -1,7 +1,7 @@
 REQ_GEN_DEPS := grpcurl protoc protoc-gen-go protoc-gen-go-grpc
 
 GEN_PROTO := spacex/api/common/status/status.proto spacex/api/device/command.proto spacex/api/device/common.proto spacex/api/device/device.proto spacex/api/device/dish_config.proto spacex/api/device/dish.proto spacex/api/device/rssi_scan.proto spacex/api/device/services/unlock/service.proto spacex/api/device/transceiver.proto spacex/api/device/wifi_config.proto spacex/api/device/wifi_util.proto spacex/api/device/wifi.proto spacex/api/satellites/network/ut_disablement_codes.proto spacex/api/telemetron/public/common/time.proto
-GEN_MODEL_DIR := model
+GEN_MODEL_DIR := starlink/model
 
 .ONESHELL:
 .PHONY: generate

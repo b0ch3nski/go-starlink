@@ -1,4 +1,4 @@
-package client
+package starlink
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 
-	"github.com/b0ch3nski/go-starlink/model/device"
+	"github.com/b0ch3nski/go-starlink/starlink/model/device"
 )
 
 const DefaultDishyAddr = "192.168.100.1:9200"
@@ -30,16 +30,11 @@ type client struct {
 
 // NewClient creates new Starlink client.
 func NewClient(ctx context.Context, addr string) (*client, error) {
-	defaultTimeout := 5 * time.Second
-
-	ctxDial, cancelDial := context.WithTimeout(ctx, defaultTimeout)
-	defer cancelDial()
-
-	conn, errDial := grpc.DialContext(ctxDial, addr, grpc.WithTransportCredentials(insecure.NewCredentials()), grpc.WithBlock())
-	if errDial != nil {
-		return nil, fmt.Errorf("failed creating gRPC connection to Starlink Dish: %w", errDial)
+	conn, err := grpc.NewClient(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	if err != nil {
+		return nil, fmt.Errorf("failed creating gRPC connection to Starlink Dish: %w", err)
 	}
-	return &client{conn: conn, dcl: device.NewDeviceClient(conn), timeout: defaultTimeout}, nil
+	return &client{conn: conn, dcl: device.NewDeviceClient(conn), timeout: 5 * time.Second}, nil
 }
 
 func (c *client) WithTimeout(timeout time.Duration) *client {
