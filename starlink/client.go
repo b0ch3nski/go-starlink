@@ -15,9 +15,11 @@ const DefaultDishyAddr = "192.168.100.1:9200"
 
 type Client interface {
 	Status(context.Context) (*device.DishGetStatusResponse, error)
+	History(context.Context) (*device.DishGetHistoryResponse, error)
 	Unstow(context.Context) error
 	Stow(context.Context) error
 	Reboot(context.Context) error
+	Location(context.Context) (*device.GetLocationResponse, error)
 }
 
 var _ Client = (*client)(nil)
@@ -61,6 +63,16 @@ func (c *client) Status(ctx context.Context) (*device.DishGetStatusResponse, err
 		return nil, err
 	}
 	return resp.GetDishGetStatus(), nil
+}
+
+func (c *client) History(ctx context.Context) (*device.DishGetHistoryResponse, error) {
+	req := &device.Request{Request: &device.Request_GetHistory{}}
+
+	resp, err := c.do(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+	return resp.GetDishGetHistory(), nil
 }
 
 func (c *client) unstow(ctx context.Context, unstow bool) error {
