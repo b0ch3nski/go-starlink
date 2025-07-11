@@ -1,6 +1,6 @@
 REQ_GEN_DEPS := grpcurl protoc protoc-gen-go protoc-gen-go-grpc
 
-GEN_PROTO := spacex/api/common/status/status.proto spacex_api/device/command.proto spacex_api/device/common.proto spacex_api/device/device.proto spacex_api/device/dish_config.proto spacex_api/device/dish.proto spacex_api/device/rssi_scan.proto spacex_api/device/services/unlock/service.proto spacex_api/device/transceiver.proto spacex_api/device/wifi_config.proto spacex_api/device/wifi_util.proto spacex_api/device/wifi.proto spacex/api/satellites/network/ut_disablement_codes.proto spacex_api/telemetron/public/common/time.proto spacex_api/telemetron/public/integrations/ut_pop_link_report.proto
+GEN_PROTO := spacex_api/common/status/status.proto spacex_api/device/command.proto spacex_api/device/common.proto spacex_api/device/device.proto spacex_api/device/dish_config.proto spacex_api/device/dish.proto spacex_api/device/rssi_scan.proto spacex_api/device/services/unlock/service.proto spacex_api/device/transceiver.proto spacex_api/device/wifi_config.proto spacex_api/device/wifi_util.proto spacex_api/device/wifi.proto spacex_api/satellites/network/ut_disablement_codes.proto spacex_api/telemetron/public/common/time.proto spacex_api/telemetron/public/integrations/ut_pop_link_report.proto
 GEN_MODEL_DIR := starlink/model
 
 .ONESHELL:
@@ -19,8 +19,8 @@ generate: ## Genertes Golang code based on GRPC reflection from Dishy
 	--go-grpc_opt="module=spacex.com/api" \
 	--go_opt="Mspacex_api/device/services/unlock/service.proto=spacex.com/api/device/services/unlock" \
 	--go-grpc_opt="Mspacex_api/device/services/unlock/service.proto=spacex.com/api/device/services/unlock" \
-	--go_opt="Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites" \
-	--go-grpc_opt="Mspacex/api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites" \
+	--go_opt="Mspacex_api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites" \
+	--go-grpc_opt="Mspacex_api/satellites/network/ut_disablement_codes.proto=spacex.com/api/satellites" \
 	--go_opt="Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron" \
 	--go-grpc_opt="Mspacex_api/telemetron/public/common/time.proto=spacex.com/api/telemetron" \
 	--go_opt="Mspacex_api/telemetron/public/integrations/ut_pop_link_report.proto=spacex.com/api/integrations" \
